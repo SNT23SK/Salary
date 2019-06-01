@@ -9,12 +9,14 @@ namespace Salary.Model
     public class Staff
     {
         public int staff_id { get; set; }
-        public string staff_name { get; set; }
-        public int cases_with_first_reply { get; set; }
-        public int first_reply_speed { get; set; }
-        public int total_amount_of_replies { get; set; }
-        public int closed_cases { get; set; }
-        public int closing_speed { get; set; }
-        public int average_rating { get; set; }
+        public string staff_email { get; set; }
+        public string staff_full_name { get; set; }
+        public string staff_signature { get; set; }
+        public List<string> staff_push_notification { get; set; }
+        public string thumbnail { get; set; }
+        public bool active { get; set; }
+        public string created_at { get; set; }
+        public string updated_at { get; set; }
+        public string status { get; set; }
     }
 }
