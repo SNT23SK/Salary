@@ -17,6 +17,6 @@ namespace Salary.Model
         public bool active { get; set; }
         public string created_at { get; set; }
         public string updated_at { get; set; }
-        public string status { get; set; }
+        public Status status { get; set; }
     }
 }
