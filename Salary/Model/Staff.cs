@@ -40,7 +40,7 @@ namespace Salary.Model
         public string UpdatedAt { get; set; }
 
         [JsonProperty("status", Required = Required.Always)]
-        public StatusAccess Status { get; set; }
+        public string Status { get; set; }
 
         public DateTime GetCreateAt() => DateTime.ParseExact(CreatedAt, formatDate, CultureInfo.InvariantCulture);
 
