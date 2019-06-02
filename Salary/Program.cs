@@ -10,6 +10,21 @@ namespace Salary
     {
         static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+                CalcBonus(args);
+                Help(args);
+                Salary(args);
+                Staff(args);
+                Config(args);
+                ListStaff(args);
+
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }
