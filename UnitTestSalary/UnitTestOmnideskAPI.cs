@@ -36,7 +36,7 @@ namespace UnitTestSalary
 
             staffs.ForEach(s =>
             {
-                Console.WriteLine("{0} {1} {2} {3}", s.staff_id, s.staff_full_name, s.active, s.status);
+                Console.WriteLine("{0} {1} {2} {3} ({4})", s.StaffId, s.StaffFullName, s.Active, s.Status, s.CreatedAt);
             });
 
             #endregion

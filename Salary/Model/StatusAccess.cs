@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Salary.Model
 {
-    public enum Status
+    public enum StatusAccess
     {
         offline = 0,
         online = 1
