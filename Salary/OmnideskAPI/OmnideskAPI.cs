@@ -164,6 +164,31 @@ namespace Salary.OmnideskAPI
             return json;
         }
 
+        private async Task<JObject> GetMessagesByCaseId(int caseId, bool order = false, int page = 1, int limit = 100)
+        {
+            string url = string.Format("/api/cases/{0}/" +
+                                       "messages.json?" +
+                                       "page={1}&" +
+                                       "limit={2}&" +
+                                       "order={3}",
+                                       caseId,
+                                       page,
+                                       limit,
+                                       order ? "desc" : "asc");
+            JObject json = null;
+
+            using (var client = new HttpClient() { BaseAddress = _baseAddress }) 
+            {
+                client.DefaultRequestHeaders.Authorization = GetAuthHeader();
+                var result = await client.GetAsync(url);
+                var bytes = await result.Content.ReadAsByteArrayAsync();
+                json = BytesToJson(bytes);
+                result.EnsureSuccessStatusCode();
+            }
+
+            return json;
+        }
+
         private async Task<JArray> GetStatisticsAllStaffsByRangeAsync(DateTime fromDate, DateTime toDate)
         {
             string url = string.Format("/api/stats_lb_staff.json?" +
