@@ -10,6 +10,7 @@ namespace Salary.Model
 {
     public class Case
     {
+        [JsonIgnore]
         private readonly string formatDate = "ddd, dd MMM yyyy HH:mm:ss K";
 
         #region Properties
@@ -78,7 +79,7 @@ namespace Salary.Model
         public long ParentCaseId { get; set; }
 
         [JsonProperty("closing_speed", Required = Required.Always)]
-        public long ClosingSpeed { get; set; }
+        public string ClosingSpeed { get; set; }
 
         [JsonProperty("language_id", Required = Required.Always)]
         public long LanguageId { get; set; }

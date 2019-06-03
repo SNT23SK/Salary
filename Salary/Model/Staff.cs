@@ -10,6 +10,7 @@ namespace Salary.Model
 {
     public class Staff
     {
+        [JsonIgnore]
         private readonly string formatDate = "ddd, dd MMM yyyy HH:mm:ss K";
 
         [JsonProperty("staff_id", Required = Required.Always)]
@@ -41,7 +42,7 @@ namespace Salary.Model
 
         [JsonProperty("status", Required = Required.Always)]
         public string Status { get; set; }
-
+        
         public DateTime GetCreateAt() => DateTime.ParseExact(CreatedAt, formatDate, CultureInfo.InvariantCulture);
 
         public DateTime GetUpdateAt() => DateTime.ParseExact(UpdatedAt, formatDate, CultureInfo.InvariantCulture);
