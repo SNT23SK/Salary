@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Salary.Logic;
 using Salary.Model;
 using System;
@@ -51,14 +52,32 @@ namespace Salary.OmnideskAPI
             List<Staff> staffs = new List<Staff>();
             Task.Run(async () => answer = await GetAllStaffsAsync()).GetAwaiter().GetResult();
 
-            int totalCount = answer["total_count"].ToObject<int>();
-
-            for (int i = 0; i < totalCount; i++)
+            if (answer.ContainsKey("total_count"))
             {
-                JObject subAnswer = answer[i.ToString()]["staff"] as JObject;
-                Staff staff = subAnswer.ToObject<Staff>();
+                int totalCount = answer["total_count"].ToObject<int>();
+
+                for (int i = 0; i < totalCount; i++)
+                {
+                    JObject subAnswer = answer[i.ToString()]["staff"] as JObject;
+                    Staff staff = subAnswer.ToObject<Staff>();
+                    staffs.Add(staff);
+                }
+            }
+
+            return staffs;
+        }
+
+        public List<StatStaff> GetStatisticsAllStaffs(DateTime fromDate, DateTime toDate)
+        {
+            JArray answer = null;
+            List<StatStaff> staffs = new List<StatStaff>();
+            Task.Run(async () => answer = await GetStatisticsAllStaffsByRangeAsync(fromDate, toDate)).GetAwaiter().GetResult();
+
+            foreach (var item in answer)
+            {
+                StatStaff staff = item["staff"].ToObject<StatStaff>();
                 staffs.Add(staff);
-            }            
+            }
 
             return staffs;
         }
@@ -118,7 +137,7 @@ namespace Salary.OmnideskAPI
             return json;
         }
 
-        private async Task<JObject> GetCasesForRangeAsycn(int staffId, DateTime fromDate, DateTime toDate, int page=1, int limit=100)
+        private async Task<JObject> GetCasesForRangeAsycn(int staffId, DateTime fromDate, DateTime toDate, int page = 1, int limit = 100)
         {
             string url = string.Format("/api/cases.json?" +
                                        "page={0}&" +
@@ -143,7 +162,30 @@ namespace Salary.OmnideskAPI
             }
 
             return json;
-        }        
+        }
+
+        private async Task<JArray> GetStatisticsAllStaffsByRangeAsync(DateTime fromDate, DateTime toDate)
+        {
+            string url = string.Format("/api/stats_lb_staff.json?" +
+                                       "from_time={0}&" +
+                                       "to_time={1}",
+                                       HelperDate.RequestDateFromDate(fromDate),
+                                       HelperDate.RequestDateFromDate(toDate));
+            JArray json = null;
+
+            using (var client = new HttpClient() { BaseAddress = _baseAddress })
+            {
+                client.DefaultRequestHeaders.Authorization = GetAuthHeader();
+                var result = await client.GetAsync(url);
+                var bytes = await result.Content.ReadAsByteArrayAsync();
+                Encoding encoding = Encoding.GetEncoding("utf-8");
+                string data = encoding.GetString(bytes, 0, bytes.Length);
+                json = JArray.Parse(data);
+                result.EnsureSuccessStatusCode();
+            }
+
+            return json;
+        }
 
         #endregion
 

@@ -95,6 +95,48 @@ namespace UnitTestSalary
             #endregion
         }
 
+        [TestMethod]
+        public void TestGetStatisticsAllStaffs()
+        {
+            #region Arrange
+
+            DateTime fromDate = new DateTime(2019, 5, 1);
+            DateTime toDate = new DateTime(2019, 5, 31);
+            List<StatStaff> staffs = new List<StatStaff>();
+
+            #endregion
+
+            #region Action
+
+            staffs = api.GetStatisticsAllStaffs(fromDate, toDate);
+
+            #endregion
+
+            #region Output
+
+            staffs.ForEach(s =>
+            {
+                Console.WriteLine("staff_id: {0} " +
+                                  "staff_name: {1} " +
+                                  "cases_with_first_reply: {2} " +
+                                  "first_reply_speed: {3} " +
+                                  "total_amount_of_replies: {4} " +
+                                  "closed_cases: {5} " +
+                                  "closing_speed: {6} " +
+                                  "average_rating: {7}",
+                                  s.StaffId,
+                                  s.StaffName,
+                                  s.CasesWithFirstReply,
+                                  s.FirstReplySpeed,
+                                  s.TotalAmountOfReplies,
+                                  s.ClosedCases,
+                                  s.ClosingSpeed,
+                                  s.AverageRating);
+            });
+
+            #endregion
+        }
+
         #region Methods
 
         private void OutputCase(Case c)
