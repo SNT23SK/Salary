@@ -47,7 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\eUnitBorder.cs" />
+    <Compile Include="Logic\eUnitBonus.cs" />
     <Compile Include="Logic\HelperDate.cs" />
+    <Compile Include="Logic\Rule.cs" />
+    <Compile Include="Logic\eRuleActions.cs" />
     <Compile Include="Model\Case.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Staff.cs" />
