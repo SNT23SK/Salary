@@ -175,8 +175,8 @@ namespace Salary.OmnideskAPI
                                        "page={0}&" +
                                        "limit={1}&" +
                                        "staff_id={2}&" +
-                                       "from_updated_time={3}&" +
-                                       "to_updated_time={4}",
+                                       "from_time={3}&" +
+                                       "to_time={4}",
                                        page,
                                        limit,
                                        staffId,

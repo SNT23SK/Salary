@@ -191,7 +191,7 @@ namespace UnitTestSalary
                                           "closing_speed: {4} " +
                                           "status {5}",
                                           c.StaffId,
-                                          c.GetCreateAt(),
+                                          c.CreatedAt,
                                           c.Channel,
                                           c.CaseId,
                                           c.ClosingSpeed,
