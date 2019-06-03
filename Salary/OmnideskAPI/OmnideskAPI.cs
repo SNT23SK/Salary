@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Salary.Logic;
 using Salary.Model;
 using System;
 using System.Collections.Generic;
@@ -128,8 +129,8 @@ namespace Salary.OmnideskAPI
                                        page,
                                        limit,
                                        staffId,
-                                       TimestampFromDateTime(fromDate),
-                                       TimestampFromDateTime(toDate));
+                                       HelperDate.TimestampFromDateTime(fromDate),
+                                       HelperDate.TimestampFromDateTime(toDate));
             JObject json = null;
 
             using (var client = new HttpClient() { BaseAddress = _baseAddress })
@@ -169,19 +170,7 @@ namespace Salary.OmnideskAPI
             Encoding encoding = Encoding.GetEncoding("utf-8");
             string data = encoding.GetString(bytes, 0, bytes.Length);
             return JObject.Parse(data);
-        }
-
-        /// <summary>
-        /// Конвертирует DateTime в Timestamp
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        private long TimestampFromDateTime(DateTime date)
-        {
-            long unixTimestamp = date.Ticks - new DateTime(1970, 1, 1).Ticks;
-            unixTimestamp /= TimeSpan.TicksPerSecond;
-            return unixTimestamp;
-        }
+        }        
 
         /// <summary>
         /// Возвращает список с количеством записей на каждый запрос 
