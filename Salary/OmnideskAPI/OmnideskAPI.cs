@@ -112,7 +112,39 @@ namespace Salary.OmnideskAPI
             }
 
             return cases;
-        }        
+        } 
+        
+        public List<Message> GetMessagesByCaseId(int caseId, bool order = false)
+        {
+            JObject answer = null;
+            List<Message> messages = new List<Message>();
+            Task.Run(async () => answer = await GetMessagesByCaseIdAsycn(caseId, order)).GetAwaiter().GetResult();
+
+            if(answer.ContainsKey("total_count"))
+            {
+                int totalCount = answer["total_count"].ToObject<int>();
+                List<int> repeat = GetRepeat(totalCount);
+
+                for (int j = 0; j < repeat.Count; j++)
+                {
+                    if (repeat.Count > 1 && j > 0 && j < repeat.Count) 
+                    {
+                        Task.Run(async () => await GetMessagesByCaseIdAsycn(caseId, order, 1 + j, repeat[j])).GetAwaiter().GetResult();
+                    }
+                    for (int i = 0; i < repeat[j]; i++)
+                    {
+                        JObject subAnswer = answer[i.ToString()]["message"] as JObject;
+                        if(subAnswer != null)
+                        {
+                            Message mes = subAnswer.ToObject<Message>();
+                            messages.Add(mes);
+                        }
+                    }
+                }
+            }
+
+            return messages;
+        }
 
         #region Properties
 
@@ -164,7 +196,7 @@ namespace Salary.OmnideskAPI
             return json;
         }
 
-        private async Task<JObject> GetMessagesByCaseId(int caseId, bool order = false, int page = 1, int limit = 100)
+        private async Task<JObject> GetMessagesByCaseIdAsycn(int caseId, bool order = false, int page = 1, int limit = 100)
         {
             string url = string.Format("/api/cases/{0}/" +
                                        "messages.json?" +

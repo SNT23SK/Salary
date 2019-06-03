@@ -65,6 +65,49 @@ namespace UnitTestSalary
         }
 
         [TestMethod]
+        public void TestGetMessagesByCaseId()
+        {
+            #region Arrange
+
+            int caseId = 6117208;
+            List<Message> messages = new List<Message>();
+
+            #endregion
+
+            #region Action
+
+            messages = api.GetMessagesByCaseId(caseId);
+
+            #endregion
+
+            #region Output
+
+            messages.ForEach(m =>
+            {
+                Console.WriteLine("message_id: {0} " +
+                                  "user_id: {1} " +
+                                  "staff_id: {2} " +
+                                  "content: {3} " +
+                                  "content_html: {4} " +
+                                  "attachments: {5} " +
+                                  "note: {6} " +
+                                  "sent_via_rule: {7} " +
+                                  "created_at: {8}",
+                                  m.MessageId,
+                                  m.UserId,
+                                  m.StaffId,
+                                  m.Content,
+                                  m.ContentHtml,
+                                  m.Attachments,
+                                  m.Note,
+                                  m.SentViaRule,
+                                  m.GetCreateAt());
+            });
+
+            #endregion
+        }
+
+        [TestMethod]
         public void TestGetReportForAllStaffByRange()
         {
             #region Arrange
