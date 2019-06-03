@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,14 @@ namespace Salary.Logic
             long unixTimestamp = date.Ticks - new DateTime(1970, 1, 1).Ticks;
             unixTimestamp /= TimeSpan.TicksPerSecond;
             return unixTimestamp;
+        }
+
+        public static string RequestDateFromDate(DateTime date)
+        {
+            return date.ToString("dd MMM yyyy HHp3Ammp3Ass pzz00", CultureInfo.InvariantCulture)
+                       .Replace('p', '%')
+                       .Replace("+", "2B")
+                       .Replace(' ', '+');
         }
     }
 }
