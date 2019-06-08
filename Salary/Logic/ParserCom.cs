@@ -8,7 +8,10 @@ namespace Salary.Logic
 {
     public class ParserCom
     {
-
+        /// <summary>
+        /// Консольная команда "list" выводящая список сотрудников
+        /// </summary>
+        /// <param name="args"></param>
         public void ListStaff(string[] args)
         {
             if (args[0]=="list")
@@ -17,12 +20,22 @@ namespace Salary.Logic
             }
             //throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Консольная команда "config" 
+        /// </summary>
+        /// <param name="args"></param>
         public void Config(string[] args)
         {
-            throw new NotImplementedException();
+            if (args[0]=="config")
+            {
+                Console.WriteLine("config");
+            }
+           // throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Консольная команда "staff" выводящая список сотрудников
+        /// </summary>
+        /// <param name="args"></param>
         public void Staff(string[] args)
         {
             if (args[0] == "staff")
@@ -30,17 +43,31 @@ namespace Salary.Logic
                 Console.WriteLine("List staff");
             }
         }
-
+        /// <summary>
+        /// Консольная команда "salary" выводящая мотивационную часть зп
+        /// </summary>
+        /// <param name="args"></param>
         public void Salary(string[] args)
         {
-            throw new NotImplementedException();
+            if (args[0]=="salary")
+            {
+                Console.WriteLine("salary");
+            }
+           // throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Консольная команда "help" выводящая список команд
+        /// </summary>
+        /// <param name="args"></param>
         public void Help(string[] args)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Консольная команда "bonus" выводящая
+        /// список сотрудников c мотивационной частью зп
+        /// </summary>
+        /// <param name="args"></param>
         public void CalcBonus(string[] args)
         {
             if (args[0] == "bonus")
@@ -63,16 +90,9 @@ namespace Salary.Logic
                 {
                     Console.WriteLine("Incorrect Input");
                 }
-
             }
-
             else return;
-
             //throw new NotImplementedException();
         }
-
-
-
-
     }
 }
