@@ -61,6 +61,7 @@
     <Compile Include="Logic\eRuleActions.cs" />
     <Compile Include="Model\Case.cs" />
     <Compile Include="Model\Message.cs" />
+    <Compile Include="Logic\ParserCom.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\StatStaff.cs" />
     <Compile Include="OmnideskAPI\OmnideskAPI.cs" />
