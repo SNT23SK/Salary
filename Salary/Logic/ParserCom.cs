@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Salary.Logic
 {
@@ -14,7 +10,7 @@ namespace Salary.Logic
         /// <param name="args"></param>
         public void ListStaff(string[] args)
         {
-            if (args[0]=="list")
+            if (args[0] == "list")
             {
                 Console.WriteLine("List staff");
             }
@@ -26,11 +22,11 @@ namespace Salary.Logic
         /// <param name="args"></param>
         public void Config(string[] args)
         {
-            if (args[0]=="config")
+            if (args[0] == "config")
             {
                 Console.WriteLine("config");
             }
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
         /// <summary>
         /// Консольная команда "staff" выводящая список сотрудников
@@ -49,11 +45,11 @@ namespace Salary.Logic
         /// <param name="args"></param>
         public void Salary(string[] args)
         {
-            if (args[0]=="salary")
+            if (args[0] == "salary")
             {
                 Console.WriteLine("salary");
             }
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
         /// <summary>
         /// Консольная команда "help" выводящая список команд
@@ -74,9 +70,9 @@ namespace Salary.Logic
             {
                 if (args.Length == 3)
                 {
-                    DateTime dDate1;DateTime dDate2;
+                    DateTime dDate1; DateTime dDate2;
                     if (DateTime.TryParse(args[1], out dDate1) && DateTime.TryParse(args[2], out dDate2))
-                    { 
+                    {
                         String.Format("{0:dd.MM.yy}", dDate2);
                         // Здесь должна быть функция расчета
                     }
