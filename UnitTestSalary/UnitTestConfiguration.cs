@@ -16,6 +16,7 @@ namespace UnitTestSalary
         public void TestSaveConfiguration()
         {
             HeplerJson.Save<Configuration>(pathFile, GreateConfiguration());
+            Console.WriteLine(pathFile);
         }
 
         [TestMethod]
@@ -202,6 +203,23 @@ namespace UnitTestSalary
                 }
             };
 
+            con.Holidays = new List<DateTime>()
+            {
+                new DateTime(2019,1,1),
+                new DateTime(2019,1,2),
+                new DateTime(2019,1,3),
+                new DateTime(2019,1,4),
+                new DateTime(2019,1,5),
+                new DateTime(2019,1,6),
+                new DateTime(2019,1,7),
+                new DateTime(2019,1,8),
+                new DateTime(2019,2,23),
+                new DateTime(2019,3,8),
+                new DateTime(2019,5,1),
+                new DateTime(2019,5,9),
+                new DateTime(2019,6,12),
+                new DateTime(2019,11,4)
+            };
 
             return con;
         }

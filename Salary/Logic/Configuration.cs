@@ -21,5 +21,8 @@ namespace Salary.Logic
 
         [DataMember]
         public List<Motivation> Motivations { get; set; }
+
+        [DataMember]
+        public List<DateTime> Holidays { get; set; }
     }
 }
