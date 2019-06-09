@@ -1,20 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Salary.OmnideskAPI;
 
 namespace Salary.Logic
 {
     public class ParserCom
     {
+        OmnideskAPI.OmnideskAPI api = new OmnideskAPI.OmnideskAPI("https://b2bfamily.omnidesk.ru", "nkazakov@b2bfamily.com", "049ba38380d92596e9fad30b5");
+
         /// <summary>
         /// Консольная команда "list" выводящая список сотрудников
         /// </summary>
         /// <param name="args"></param>
         public void ListStaff(string[] args)
         {
-            if (args[0] == "list")
+            if (args[0]=="staff")
             {
-                Console.WriteLine("List staff");
+                api.GetAllStaffs().Where(s => s.Active == true).ToList().ForEach(c =>
+                {
+                    Console.WriteLine("employee id:{0} {1} {2}", c.StaffId, c.StaffFullName, c.StaffEmail);
+                });
             }
-            //throw new NotImplementedException();
         }
         /// <summary>
         /// Консольная команда "config" 
@@ -26,19 +35,8 @@ namespace Salary.Logic
             {
                 Console.WriteLine("config");
             }
-            // throw new NotImplementedException();
-        }
-        /// <summary>
-        /// Консольная команда "staff" выводящая список сотрудников
-        /// </summary>
-        /// <param name="args"></param>
-        public void Staff(string[] args)
-        {
-            if (args[0] == "staff")
-            {
-                Console.WriteLine("List staff");
-            }
-        }
+        }        
+
         /// <summary>
         /// Консольная команда "salary" выводящая мотивационную часть зп
         /// </summary>
@@ -57,7 +55,21 @@ namespace Salary.Logic
         /// <param name="args"></param>
         public void Help(string[] args)
         {
-            throw new NotImplementedException();
+            if (args.Length == 1)
+            {
+                string command = args[0].Trim().ToLower();
+                if (command == "help" || command == "")
+                {
+                    Console.WriteLine("======================== !!! Help !!! ====================" + Environment.NewLine +
+                                      "List commands:" + Environment.NewLine +
+                                      "\tbonus <from date> <to date> - output list everyone employees with bonus to salary for date range" + Environment.NewLine +
+                                      "\t\texample: bonus 01.05.19 31.05.19" + Environment.NewLine +
+                                      "\tstaff - output list staff" + Environment.NewLine +
+                                      "\tsalary <mail> <from date> <to date> - output bonus for current employee" + Environment.NewLine +
+                                      "\t\texample: sharikov@mail.ru 01.05.19 31.05.19" + Environment.NewLine +
+                                      "");
+                }
+            }
         }
         /// <summary>
         /// Консольная команда "bonus" выводящая
@@ -88,7 +100,6 @@ namespace Salary.Logic
                 }
             }
             else return;
-            //throw new NotImplementedException();
         }
     }
 }

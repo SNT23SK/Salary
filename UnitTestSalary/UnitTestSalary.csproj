@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTestConfiguration.cs" />
     <Compile Include="UnitTestHelperDate.cs" />
     <Compile Include="UnitTestOmnideskAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
