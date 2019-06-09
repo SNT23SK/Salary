@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Salary;
 using Salary.Logic;
@@ -9,7 +10,7 @@ namespace UnitTestSalary
     [TestClass]
     public class UnitTestConfiguration
     {
-        string pathFile = @"C:\Users\alexn\source\repos\Salary\Salary\bin\Debug\salary.config";
+        string pathFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "salary.config");
 
         [TestMethod]
         public void TestSaveConfiguration()
