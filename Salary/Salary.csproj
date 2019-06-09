@@ -39,6 +39,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Configuration.cs" />
     <Compile Include="Logic\eUnitBorder.cs" />
     <Compile Include="Logic\eUnitBonus.cs" />
     <Compile Include="Logic\HelperDate.cs" />
+    <Compile Include="Logic\HeplerJson.cs" />
+    <Compile Include="Logic\Motivation.cs" />
     <Compile Include="Logic\Rule.cs" />
     <Compile Include="Logic\eRuleActions.cs" />
     <Compile Include="Model\Case.cs" />
