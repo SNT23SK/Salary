@@ -14,16 +14,16 @@ namespace Salary.Logic
         /// Сериализация списка данных в файл Json
         /// </summary>
         /// <typeparam name="T">Тип данных</typeparam>
-        /// <param name="name">Путь к файлу</param>
+        /// <param name="pathFile">Путь к файлу</param>
         /// <param name="objects">Список данных</param>
-        public static void Serialization<T>(string name, List<T> objects)
+        public static void Save<T>(string pathFile, T obj)
         {
             try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<T>));
-                using (var fs = new FileStream(name, FileMode.OpenOrCreate))
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(T));
+                using (var fs = new FileStream(pathFile, FileMode.OpenOrCreate))
                 {
-                    jsonSerializer.WriteObject(fs, objects);
+                    jsonSerializer.WriteObject(fs, obj);
                 }
             }
             catch (Exception)
@@ -36,17 +36,17 @@ namespace Salary.Logic
         /// Десериализация файла Json в список данных
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="name"></param>
+        /// <param name="pathFile"></param>
         /// <returns></returns>
-        public static List<T> Deserialization<T>(string name)
+        public static T Load<T>(string pathFile)
         {
             try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<T>));
-                List<T> result = new List<T>();
-                using (var fs = new FileStream(name, FileMode.OpenOrCreate))
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(T));
+                T result;
+                using (var fs = new FileStream(pathFile, FileMode.OpenOrCreate))
                 {
-                    result = (List<T>)jsonSerializer.ReadObject(fs);
+                    result = (T)jsonSerializer.ReadObject(fs);
                 }
                 return result;
             }

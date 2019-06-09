@@ -14,6 +14,6 @@ namespace Salary.Logic
         public string Name { get; set; }
 
         [DataMember]
-        public ICollection<Rule> Rules { get; set; }
+        public List<Rule> Rules { get; set; }
     }
 }
