@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic\BusinessLogic.cs" />
+    <Compile Include="Logic\Coeffient.cs" />
     <Compile Include="Logic\Configuration.cs" />
     <Compile Include="Logic\eUnitBorder.cs" />
     <Compile Include="Logic\eUnitBonus.cs" />

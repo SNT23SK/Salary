@@ -8,8 +8,13 @@ namespace Salary.Logic
 {
     public class MotivStaff
     {
+        public MotivStaff()
+        {
+            Coefficients = new List<Coeffient>();
+        }
+
         public long StaffId { get; set; }
         
-        public Dictionary<string, double> coefficients { get; set; }
+        public List<Coeffient> Coefficients { get; set; }
     }
 }

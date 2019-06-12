@@ -44,6 +44,13 @@ namespace Salary.OmnideskAPI
             _apikey = apikey;
         }
 
+        public OmnideskAPI(Configuration config)
+        {
+            _baseAddress = new Uri(config.Address);
+            _username = config.Login;
+            _apikey = config.ApiKey;
+        }
+
         #endregion
 
         public List<Staff> GetAllStaffs()
