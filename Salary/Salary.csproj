@@ -51,12 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\BusinessLogic.cs" />
     <Compile Include="Logic\Configuration.cs" />
     <Compile Include="Logic\eUnitBorder.cs" />
     <Compile Include="Logic\eUnitBonus.cs" />
     <Compile Include="Logic\HelperDate.cs" />
-    <Compile Include="Logic\HeplerJson.cs" />
+    <Compile Include="Logic\HelperJson.cs" />
     <Compile Include="Logic\Motivation.cs" />
+    <Compile Include="Logic\MotivStaff.cs" />
     <Compile Include="Logic\Rule.cs" />
     <Compile Include="Logic\eRuleActions.cs" />
     <Compile Include="Model\Case.cs" />

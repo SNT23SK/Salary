@@ -15,7 +15,7 @@ namespace UnitTestSalary
         [TestMethod]
         public void TestSaveConfiguration()
         {
-            HeplerJson.Save<Configuration>(pathFile, GreateConfiguration());
+            HelperJson.Save<Configuration>(pathFile, GreateConfiguration());
             Console.WriteLine(pathFile);
         }
 
@@ -23,7 +23,7 @@ namespace UnitTestSalary
         public void TestLoadConfiguration()
         {
             Configuration expected = GreateConfiguration();
-            Configuration actual = HeplerJson.Load<Configuration>(pathFile);
+            Configuration actual = HelperJson.Load<Configuration>(pathFile);
 
             Assert.AreEqual(actual.Motivations[0].Rules[0].Actions, expected.Motivations[0].Rules[0].Actions);
         }
@@ -178,7 +178,7 @@ namespace UnitTestSalary
                 },
                 new Motivation()
                 {
-                    Name = "OverTime",
+                    Name = "overTime",
                     Rules = new List<Rule>()
                     {
                         new Rule()

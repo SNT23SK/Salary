@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Salary.Logic
 {
-    public static class HeplerJson
+    public static class HelperJson
     {
         /// <summary>
         /// Сериализация списка данных в файл Json
