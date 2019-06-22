@@ -47,8 +47,7 @@ namespace Salary.Logic
             {
                 Console.WriteLine("salary");
             }
-            // throw new NotImplementedException();
-        }
+                    }
         /// <summary>
         /// Консольная команда "help" выводящая список команд
         /// </summary>

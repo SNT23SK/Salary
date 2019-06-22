@@ -81,7 +81,7 @@ namespace Salary.OmnideskAPI
 
             return staffs;
         }
-
+C:\Users\ACER\Source\Repos\Salary\Salary\OmnideskAPI\OmnideskAPI.cs
         public List<Case> GetCasesRange(int staffsId, DateTime fromDate, DateTime toDate)
         {
             JObject answer = null;
